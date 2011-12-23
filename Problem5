@@ -1,0 +1,44 @@
+// Problem 5:
+// 2520 is the smallest number that can be divided by each of the numbers
+//   from 1 to 10 without any remainder.
+
+// What is the smallest positive number that is evenly
+// 	divisible by all of the numbers from 1 to 20?
+
+public class Problem5{
+	
+	// Testing can begin at 2520, we are told that this is the smallest number
+	//	evenly divisible by all numbers 1-10, so no number smaller than that can
+	//	possibly be evenly divisible by all numbers 1-20.
+	private static int start = 2520;
+	
+	// Any number that is evenly divisible by 11-20 will also be evenly
+	//	divisible by all numbers 1-10. So only testing 11-20 should make the
+	//	program slightly more efficient.
+	private static int tests[] = {20, 19, 18, 17, 16, 15, 14, 13, 12, 11};
+	
+	public Problem5(){}
+	
+	// Checks the current value of start against each index of tests[].
+	//	Returns start after it is proven evenly divisible by every number stored 
+	//	in tests[].
+	public static int smallest(){
+		int i = 0;
+		while(i < 10){
+			if((start % tests[i]) == 0){
+				i++;
+			}
+			else{
+				i = 0;
+				start++;
+			}	
+		}
+		return start;
+	}
+	
+	// Prints the answer
+	public static void main(String args[]){
+		System.out.println("Final Answer: " + Problem5.smallest());
+	}
+	
+}
